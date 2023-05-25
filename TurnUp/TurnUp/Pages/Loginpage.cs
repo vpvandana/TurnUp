@@ -1,4 +1,4 @@
-﻿using Docker.DotNet.Models;
+﻿
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurnUp.Utilities;
 
 namespace TurnUp.Pages
 {
-    public class Loginpage
+    public class Loginpage : CommonDriver
     {
         public void Loginsteps(IWebDriver driver)
         {
@@ -17,6 +18,7 @@ namespace TurnUp.Pages
             driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
             driver.Manage().Window.Maximize();
 
+            Wait.WaitToExist(driver, "Id", "Username", 7);
 
             //Enter the valid username
             IWebElement usernameTextbox = driver.FindElement(By.Id("UserName"));

@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurnUp.Utilities;
 
 namespace TurnUp.Pages
 {
-    public class TMpage
+    public class TMpage : CommonDriver
     {
-        public void CreateTimerec(IWebDriver driver)
+        public void CreateTimerecord(IWebDriver driver)
         {
             //------------------CREATE NEW RECORD-------------------
 
