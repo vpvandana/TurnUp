@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TurnUp.Utilities;
+using NUnit.Framework;
 
 namespace TurnUp.Pages
 {
@@ -17,8 +18,9 @@ namespace TurnUp.Pages
             //Launch The application Turn up Portal
             driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
             driver.Manage().Window.Maximize();
+            Thread.Sleep(3000);
 
-            Wait.WaitToExist(driver, "Id", "Username", 7);
+           // Wait.WaitToExist(driver, "Id", "Username", 7);
 
             //Enter the valid username
             IWebElement usernameTextbox = driver.FindElement(By.Id("UserName"));
