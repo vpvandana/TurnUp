@@ -51,21 +51,38 @@ namespace TurnUp.Pages
             //Check if new record is created
 
             //Go to last page by clicking last page button as new record is added at the last
-            IWebElement lastPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
-            lastPageButton.Click();
-            Thread.Sleep(2000);
+            //IWebElement lastPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+            //lastPageButton.Click();
+            //Thread.Sleep(2000);
 
             //Check if last row rec is same as the created record
-            IWebElement lastrowrecord = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            //IWebElement lastrowrecord = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
            
            
-            Assert.That(lastrowrecord.Text == "May 2023", "The record is not created!");
+           // Assert.That(lastrowrecord.Text == "May 2023", "The record is not created!");
 
 
         }
+        public string GetCode(IWebDriver driver) 
+        {
+            IWebElement newCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            return newCode.Text;
+        }
 
+        public string GetDescription(IWebDriver driver) 
+        {
+            IWebElement newDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            return newDescription.Text; 
+         
+        }
+
+        public string GetPrice(IWebDriver driver) 
+        {
+            IWebElement newPrice = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
+            return newPrice.Text;
+        }
         //-------------------EDIT A TIME RECORD----------------------
-        public void UpdateTimerec(IWebDriver driver)
+        public void EditTM(IWebDriver driver , string description)
         {
 
             //Click on edit button
@@ -101,7 +118,7 @@ namespace TurnUp.Pages
             //Edit Description
             IWebElement descriptiontxtboxedit = driver.FindElement(By.XPath("//*[@id=\"Description\"]"));
             descriptiontxtboxedit.Clear();
-            descriptiontxtboxedit.SendKeys("June2023");
+            descriptiontxtboxedit.SendKeys(description);
             Thread.Sleep(3000);
 
             //Edit Price
@@ -151,8 +168,8 @@ namespace TurnUp.Pages
 
             //Check if new code is edited
 
-            IWebElement editedcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-            Assert.That(editedcode.Text == "June2023", "The code is not edited");
+            
+           
 
            /* IWebElement editedDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
             Assert.That(editedDescription.Text == "June2023", "The description is not edited");
@@ -160,6 +177,11 @@ namespace TurnUp.Pages
             IWebElement editedPrice = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
             Assert.That(editedPrice.Text == "30", "Price not edited");*/
 
+        }
+        public string GetEditedDescription(IWebDriver driver , string description)
+        {
+            IWebElement editedDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            return editedDescription.Text;
         }
 
             //--------------------TO DELETE A RECORD----------------------

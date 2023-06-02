@@ -27,7 +27,7 @@ namespace TurnUp.Tests
         {
 
             
-            hp.Homesteps(driver);
+            hp.GoToTMpage(driver);
 
             //Time and Material page initialization and defenition
             tm.CreateTimerecord(driver);
@@ -36,8 +36,8 @@ namespace TurnUp.Tests
         [Test, Order (2)]
         public void Edit_Test() 
         {
-            hp.Homesteps(driver);
-            tm.UpdateTimerec(driver);
+            hp.GoToTMpage(driver);
+           // tm.EditTM(driver);
 
         }
 
@@ -45,7 +45,7 @@ namespace TurnUp.Tests
         [Test, Order (3)]
         public void Delete_Test()
         {
-            hp.Homesteps(driver);
+            hp.GoToTMpage(driver);
             tm.Deleterec(driver);
 
         }

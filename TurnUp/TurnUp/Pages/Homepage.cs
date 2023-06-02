@@ -11,7 +11,7 @@ namespace TurnUp.Pages
 {
     public class Homepage : CommonDriver 
     {
-        public void Homesteps(IWebDriver driver)
+        public void GoToTMpage(IWebDriver driver)
         {
            // Navigate to Administration
 
