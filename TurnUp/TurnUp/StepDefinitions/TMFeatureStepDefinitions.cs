@@ -44,24 +44,31 @@ namespace TurnUp.StepDefinitions
 
             Assert.AreEqual("May2023", newCode, "Actual code and expexted code do not match");
             Assert.AreEqual("May2023", newDescription, "Actual description and expected description do not match");
-            Assert.AreEqual("13", newPrice, "Actual price and expexted price do not match");
+            Assert.AreEqual("$13.00", newPrice, "Actual price and expexted price do not match");
         }
 
-        [When(@"I update existing time and materials '([^']*)' record")]
-        public void WhenIUpdateExistingTimeAndMaterialsRecord(string description)
+        
+        [When(@"I update existing time and materials '([^']*)','([^']*)' and '([^']*)' record")]
+        public void WhenIUpdateExistingTimeAndMaterialsAndRecord(string description, string code, string price)
         {
             TMpage tmpageobject = new TMpage();
-            tmpageobject.EditTM(driver, description);
+            tmpageobject.EditTM(driver, description, code,  price);
         }
 
-        [Then(@"The record has been updated '([^']*)'")]
-        public void ThenTheRecordHasBeenUpdated(string description)
+        [Then(@"The record has been updated '([^']*)' , '([^']*)' and '([^']*)'")]
+        public void ThenTheRecordHasBeenUpdatedAnd(string description, string code, string price)
         {
             TMpage tmpageobject = new TMpage();
-            string editedDescription = tmpageobject.GetEditedDescription(driver, description);
-            Assert.AreEqual(editedDescription , description , "The code is not edited");
+            string editedDescription = tmpageobject.GetEditedDescription(driver);
+            string editedCode = tmpageobject.GetEditedCode(driver);
+            string editedPrice = tmpageobject.GetEditedPrice(driver);
+            Assert.AreEqual(editedDescription, description, "The actual description and edited description does not match");
+            Assert.AreEqual(editedCode, code , "The actual code and edited code does not match");
+            Assert.AreEqual(editedPrice, price, "The actual price and edited price does not match");
         }
-
 
     }
+
+
 }
+

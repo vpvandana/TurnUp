@@ -13,11 +13,11 @@ Scenario: Create new Time and Materials record
 	Scenario Outline: Edit existing time and material record
 	Given Launch TurnUp portal and login with valid credentials
 	When I navigate to time and material page
-	And I update existing time and materials '<Description>' record 
-	Then The record has been updated '<Description>'
+	And I update existing time and materials '<Description>','<Code>' and '<Price>' record 
+	Then The record has been updated '<Description>' , '<Code>' and '<Price>'
 
 	Examples: 
-	| Description |
-	| Materials   |
-	| Time        |
-	| June2023    |
+	| Description | Code   | Price |
+	| Materials   | Mat    |$20.00    |
+	| Time        | TT     |$12.00    |
+	| June2023    | June23 |$13.00    |

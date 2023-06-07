@@ -30,7 +30,7 @@ namespace TurnUp.Tests
             hp.GoToTMpage(driver);
 
             //Time and Material page initialization and defenition
-            tm.CreateTimerecord(driver);
+           // tm.CreateTimerecord(driver);
         }
 
         [Test, Order (2)]
